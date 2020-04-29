@@ -1,0 +1,35 @@
+
+name: Update Notebooks
+
+on:
+  schedule:
+    - cron: '0 19 * * *'
+    
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    
+    steps:
+
+    - name: Copy Repository Contents
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.6
+
+    - name: Install dependencies
+      run: |
+        pip3 install matplotlib pandas jupyter papermill
+        
+    - name: Update notebooks
+      run: |
+        papermill --kernel python3 grafici.ipynb
+        
+    - name: save notebooks & images
+      run: |
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        git commit -m'[bot] UPDATE: daily update'
+        git push -f
