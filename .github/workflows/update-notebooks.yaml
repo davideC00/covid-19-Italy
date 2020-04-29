@@ -29,7 +29,7 @@ jobs:
         
     - name: Update notebooks
       run: |
-        papermill --kernel python3 grafici.ipynb
+        papermill --kernel python3 grafici.ipynb grafici.ipynb
         git add grafici.ipynb
         
     - name: Save notebooks
