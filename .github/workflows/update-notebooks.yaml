@@ -1,8 +1,9 @@
+
 name: Update Notebooks
 
 on:
   schedule:
-    - cron:  every 24 hours
+    - cron: '0 19 * * *'
     
 jobs:
   update-notebooks:
