@@ -4,7 +4,7 @@ name: Update Notebooks
 on:
   schedule:
     - cron: '0 19 * * *'
-  push: Debugging
+  push: 
     branches: [ master ]
     
 jobs:
