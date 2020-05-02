@@ -4,8 +4,8 @@ name: Update Notebooks
 on:
   schedule:
     - cron: '0 19 * * *'
-  #push: Debugging
-  #  branches: [ master ]
+  push: Debugging
+    branches: [ master ]
     
 jobs:
   update:
@@ -31,6 +31,11 @@ jobs:
       run: |
         papermill --kernel python3 grafici.ipynb grafici.ipynb
         git add grafici.ipynb
+        
+    - name: Convert notebook to posts
+      run: |
+        jupyter nbconvert --output-dir='./docs' --to html --output index.html grafici.ipynb --no-input
+        git add ./docs/index.html
         
     - name: Save notebooks
       run: |
