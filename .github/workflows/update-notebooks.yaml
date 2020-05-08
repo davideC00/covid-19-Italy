@@ -23,7 +23,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip3 install matplotlib ipykernel pandas jupyter papermill
+        pip3 install matplotlib ipykernel pandas jupyter papermill geopandas
         python3 -m ipykernel install --user --name python3
         sudo chmod -R 777 .
         
